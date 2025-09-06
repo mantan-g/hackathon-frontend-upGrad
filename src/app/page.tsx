@@ -5,73 +5,7 @@ import { Program } from "@/types/program";
 import { useEmailStorage } from "@/hooks/useLocalStorage";
 import EmailPopup from "@/components/EmailPopup";
 import ProgramCard from "@/components/ProgramCard";
-
-// Mock data - replace with actual API call
-const mockPrograms: Program[] = [
-  {
-    _id: "1",
-    name: "Generative AI Foundations Certificate Program",
-    description: "Access to GPT 4.0 credits worth 499",
-    imgUrl:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMzNzNkYyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+R2VuZXJhdGl2ZSBBSSBGb3VuZGF0aW9uczwvdGV4dD48L3N2Zz4=",
-    courses: [
-      {
-        title: "Introduction to AI",
-        description: "Basic concepts of artificial intelligence",
-        module: [
-          {
-            title: "AI Fundamentals",
-            description: "Understanding AI basics",
-            asset: {},
-          },
-        ],
-        overView: {},
-      },
-    ],
-  },
-  {
-    _id: "2",
-    name: "Generative AI Mastery Certificate for Data Analysis",
-    description: "Learn to use ChatGPT & Power BI, & more",
-    imgUrl:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzE5N2ZiYyIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QUkgRGF0YSBBbmFseXNpczwvdGV4dD48L3N2Zz4=",
-    courses: [
-      {
-        title: "Data Analysis with AI",
-        description: "Advanced data analysis techniques",
-        module: [
-          {
-            title: "ChatGPT for Data",
-            description: "Using ChatGPT for data analysis",
-            asset: {},
-          },
-        ],
-        overView: {},
-      },
-    ],
-  },
-  {
-    _id: "3",
-    name: "Generative AI Mastery Certificate for Software Development",
-    description: "Learn to use GitHub copilot, Azure & more",
-    imgUrl:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzEwYjk4MSIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QUkgU29mdHdhcmUgRGV2PC90ZXh0Pjwvc3ZnPg==",
-    courses: [
-      {
-        title: "AI-Powered Development",
-        description: "Software development with AI tools",
-        module: [
-          {
-            title: "GitHub Copilot",
-            description: "AI-assisted coding",
-            asset: {},
-          },
-        ],
-        overView: {},
-      },
-    ],
-  },
-];
+import axiosInstance from "@/utils/axiosInstance";
 
 export default function ProgramsPage() {
   const { email, hasEmail, saveEmail, clearEmail, isLoading } =
@@ -82,10 +16,10 @@ export default function ProgramsPage() {
   // Load programs (replace with actual API call)
   useEffect(() => {
     const loadPrograms = async () => {
+      setIsLoadingPrograms(true);
       try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        setPrograms(mockPrograms);
+        const response = await axiosInstance.get("/program/programList");
+        setPrograms(response.data?.result || []);
       } catch (error) {
         console.error("Error loading programs:", error);
       } finally {

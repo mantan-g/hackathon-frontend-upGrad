@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Microsoft Certification Programs | upGrad",
-  description: "Advance your career with industry-recognized Microsoft certifications. Choose from comprehensive AI and technology programs.",
+  title: "Glimpse AI | upGrad",
+  description:
+    "Advance your career with industry-recognized Microsoft certifications. Choose from comprehensive AI and technology programs.",
 };
 
 export default function RootLayout({

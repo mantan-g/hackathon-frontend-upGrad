@@ -16,16 +16,19 @@ export default function ProgramCard({
   onAIGlimpse,
   index = 0,
 }: ProgramCardProps) {
+  const handleViewProgram = () => {
+    sessionStorage.setItem("selectedProgram", JSON.stringify(program));
+    window.location.href = "/program/detail";
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Program Image */}
-      <div className="relative h-48 w-full">
+      <div className="relative h-70 w-full">
         <Image
-          src={program.imgUrl}
+          src={`data:image/svg+xml;base64,${program.imgUrl}`}
           alt={program.name}
           fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {index === 0 && (
           <div className="absolute top-4 left-4">
@@ -151,7 +154,7 @@ export default function ProgramCard({
         {/* Action Buttons */}
         <div className="flex space-x-3">
           <button
-            onClick={() => onViewProgram?.(program)}
+            onClick={handleViewProgram}
             className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
           >
             View Program
