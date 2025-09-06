@@ -74,6 +74,12 @@ export default function CourseAccordion({ courses }: any) {
         </p>
       </div>
 
+      <div>
+        <a href="/" className="text-sm text-blue-500 pt-2">
+          Back to home
+        </a>
+      </div>
+
       {/* Video Player Modal */}
       {playingVideo && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">

@@ -10,6 +10,8 @@ export default function ProgramDetail() {
     const program = JSON.parse(
       sessionStorage.getItem("selectedProgram") || "{}"
     );
+
+    
     if (!program) {
       window.location.href = "/";
       return;
@@ -19,7 +21,7 @@ export default function ProgramDetail() {
   }, []);
 
   return (
-    <div className="bg-white h-full w-full">
+    <div className="bg-white h-full w-full min-h-screen">
       <CourseAccordion courses={program?.courses ?? []} />
     </div>
   );

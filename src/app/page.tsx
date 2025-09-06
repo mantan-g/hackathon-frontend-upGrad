@@ -52,6 +52,8 @@ export default function ProgramsPage() {
 
   const handleClearEmail = () => {
     clearEmail();
+    localStorage.removeItem("selectedProgram");
+    sessionStorage.removeItem("selectedProgram");
   };
 
   // Show loading spinner while checking localStorage

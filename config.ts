@@ -1,3 +1,3 @@
 export const CONFIG = {
-  backendDomain: "http://localhost:3005",
+  backendDomain: "https://hackathon-backend-upgrad-3.onrender.com",
 };
