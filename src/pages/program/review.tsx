@@ -2,39 +2,22 @@ import React, { useEffect, useState } from "react";
 import { FileText, Play, HelpCircle } from "lucide-react";
 import "@/app/globals.css";
 
-interface ContentItem {
-  type: string;
-  content?: string;
-  gDrive?: string;
-  question?: string;
-  options?: { a: string; b: string; c: string; d: string };
-  correct?: string;
-}
-
 const ProgramReview: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedType, setSelectedType] = useState<string>("article");
+  const [data, setData] = useState<any>([]);
 
-  const data: any = [
-    {
-      video: { gDriveUrl: "1KGFGDMvfkyNXsopf0IxqRDyP4FZCPBYJ" },
-      article: { content: "This is an article." },
-      quiz: {
-        question: "What is 2 + 2?",
-        options: { a: "3", b: "4", c: "5", d: "6" },
-        correct: "b",
-      },
-    },
-    {
-      video: { gDriveUrl: "1KGFGDMvfkyNXsopf0IxqRDyP4FZCPBYJ" },
-      article: { content: "This is another article." },
-      quiz: {
-        question: "What is 3 + 3?",
-        options: { a: "5", b: "6", c: "7", d: "8" },
-        correct: "b",
-      },
-    },
-  ];
+  useEffect(() => {
+    const program = JSON.parse(
+      sessionStorage.getItem("selectedProgram") || "{}"
+    );
+    if (!program) {
+      window.location.href = "/";
+      return;
+    }
+
+    setData(program.overView || []);
+  }, []);
 
   const renderContent = () => {
     const item = data[currentIndex];

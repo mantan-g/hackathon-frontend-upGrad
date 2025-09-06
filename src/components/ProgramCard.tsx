@@ -123,7 +123,15 @@ export default function ProgramCard({
                   <span className="text-xs font-bold text-yellow-900">✨</span>
                 </div>
               </div>
-              <div>
+              <div
+                onClick={() => {
+                  sessionStorage.setItem(
+                    "selectedProgram",
+                    JSON.stringify(program)
+                  );
+                  window.location.href = "/program/review";
+                }}
+              >
                 <h4 className="font-semibold text-gray-900 text-sm group-hover:text-purple-700 transition-colors">
                   Get AI Glimpse of this Program
                 </h4>
