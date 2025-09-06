@@ -92,7 +92,7 @@ export default function ProgramsPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-sm text-gray-900">
-                      🚀 NEW: AI-Powered Program Insights
+                      🚀 NEW: AI-Powered Program Preview
                     </h3>
                     <p className="text-purple-600 text-xs">
                       Get personalized recommendations in seconds
