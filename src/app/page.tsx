@@ -95,7 +95,7 @@ export default function ProgramsPage() {
                       🚀 NEW: AI-Powered Program Preview
                     </h3>
                     <p className="text-purple-600 text-xs">
-                      Get personalized recommendations in seconds
+                      Get personalized program preview in seconds
                     </p>
                   </div>
                 </div>
