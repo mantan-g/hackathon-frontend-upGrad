@@ -170,7 +170,7 @@ export default function CourseAccordion({ courses }: any) {
                           {module.description}
                         </p>
                         <div className="mt-1 text-xs text-purple-600 font-medium">
-                          {module.asset.length} video
+                          {module.asset.length} content
                           {module.asset.length !== 1 ? "s" : ""}
                         </div>
                       </div>

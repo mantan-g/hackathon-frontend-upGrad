@@ -11,7 +11,6 @@ export default function ProgramDetail() {
       sessionStorage.getItem("selectedProgram") || "{}"
     );
 
-    
     if (!program) {
       window.location.href = "/";
       return;
